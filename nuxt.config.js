@@ -34,12 +34,7 @@ module.exports = {
   /*
   ** Nuxt.js modules
   */
-  modules: [
-    // Doc: https://github.com/nuxt-community/axios-module#usage
-    '@nuxtjs/axios',
-    // Doc: https://buefy.github.io/#/documentation
-    'nuxt-buefy'
-  ],
+  modules: ['@nuxtjs/proxy', '@nuxtjs/axios', 'nuxt-buefy'],
   /*
   ** Axios module configuration
   */
@@ -50,7 +45,10 @@ module.exports = {
   },
 
   proxy: {
-    '/api/': { target: 'https://rx-78.forbole.com' }
+    '/api/': {
+      target: 'http://localhost:26657',
+      pathRewrite: { '^/api/': '' }
+    }
   },
 
   /*
